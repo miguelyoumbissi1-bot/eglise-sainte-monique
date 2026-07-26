@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paroisse Sainte Monique — Makepe</title>
+<meta name="description" content="Site de la paroisse Sainte Monique à Makepe : horaires des messes, sacrements, groupes paroissiaux et contact.">
+
+<!-- Polices : une serif de caractère pour les titres, une sans-serif sobre pour le texte,
+     une mono pour les horaires (effet "tableau d'affichage") -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===================== EN-TÊTE / NAVIGATION ===================== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="brand" data-route-link>
+      <span class="brand-mark" aria-hidden="true">
+        <!-- Petit emblème en arc, motif répété du site -->
+        <svg viewBox="0 0 40 40" width="34" height="34">
+          <path d="M20 4 C10 4 6 12 6 20 L6 34 L34 34 L34 20 C34 12 30 4 20 4 Z"
+                fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="20" y1="10" x2="20" y2="22" stroke="currentColor" stroke-width="2"/>
+          <line x1="14" y1="16" x2="26" y2="16" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>Ste Monique</strong>
+        <em>Paroisse de Makepe</em>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" data-route-link>
+      <a href="#home">Accueil</a>
+      <a href="#paroisse">La Paroisse</a>
+      <a href="#horaires">Horaires</a>
+      <a href="#sacrements">Sacrements</a>
+      <a href="#groupes">Groupes</a>
+      <a href="#galerie">Galerie</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== CONTENU (routé en JS, une "view" = une page) ===================== -->
+<main id="app">
+
+  <!-- ---------- ACCUEIL ---------- -->
+  <section class="view" id="view-home" data-title="Accueil">
+
+    <!-- Diaporama : glisse automatiquement entre les photos ci-dessous.
+         Pour changer les photos, remplace simplement les fichiers dans le
+         dossier /image/ en gardant les mêmes noms (diaporama-1.jpg, etc.),
+         ou modifie les attributs src ci-dessous. Ajoute/retire des <div class="slide">
+         pour ajouter ou enlever des photos. -->
+    <div class="diaporama" id="diaporama" aria-roledescription="carrousel" aria-label="Photos de la paroisse">
+      <div class="diaporama-track" id="diaporamaTrack">
+        <div class="slide">
+          <img src="image/messe.jpg" alt="Photo de la paroisse 1">
+        </div>
+        <div class="slide">
+          <img src="image/front.jpg" alt="Photo de la paroisse 2">
+        </div>
+        <div class="slide">
+          <img src="image/main.jpg" alt="Photo de la paroisse 3">
+        </div>
+        <div class="slide">
+          <img src="image/culte.jpg" alt="Photo de la paroisse 4">
+        </div>
+      </div>
+
+      <button type="button" class="diaporama-nav prev" id="diaporamaPrev" aria-label="Photo précédente">&#8592;</button>
+      <button type="button" class="diaporama-nav next" id="diaporamaNext" aria-label="Photo suivante">&#8594;</button>
+
+      <div class="diaporama-dots" id="diaporamaDots" role="tablist" aria-label="Choisir une photo"></div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Quartier Makepe · Douala</p>
+        <h1>Une communauté qui prie,<br>qui se soutient,<br>qui accueille.</h1>
+        <p class="hero-lead">Bienvenue sur le site de la paroisse Sainte Monique. Retrouvez ici les horaires
+          des célébrations, les sacrements, la vie de nos groupes et le moyen de nous joindre.</p>
+        <div class="hero-actions">
+          <a href="#horaires" class="btn btn-primary" data-route-link>Voir les horaires</a>
+          <a href="#galerie" class="btn btn-ghost" data-route-link>Voir la galerie</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bandeau horaires façon "tableau d'affichage" -->
+    <div class="board">
+      <p class="board-label">Prochaines célébrations</p>
+      <ul class="board-list">
+        <li><span class="board-time">Dim · 07:00</span><span>Messe en français</span></li>
+        <li><span class="board-time">Dim · 09:30</span><span>Messe solennelle</span></li>
+        <li><span class="board-time">Dim · 17:00</span><span>Messe des jeunes</span></li>
+        <li><span class="board-time">Mer · 18:00</span><span>Adoration eucharistique</span></li>
+      </ul>
+    </div>
+
+    <div class="section-grid">
+      <article class="teaser-card">
+        <h3>La Paroisse</h3>
+        <p>Notre histoire, notre patronne Sainte Monique, et l'équipe pastorale qui vous accueille.</p>
+        <a href="#paroisse" data-route-link>Découvrir →</a>
+      </article>
+      <article class="teaser-card">
+        <h3>Sacrements</h3>
+        <p>Baptême, mariage, confirmation : les démarches à suivre, expliquées simplement.</p>
+        <a href="#sacrements" data-route-link>Consulter →</a>
+      </article>
+      <article class="teaser-card">
+        <h3>Groupes &amp; Mouvements</h3>
+        <p>Chorale, catéchèse, Caritas, jeunes : trouvez votre place dans la communauté.</p>
+        <a href="#groupes" data-route-link>Rejoindre →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ---------- LA PAROISSE ---------- -->
+  <section class="view" id="view-paroisse" data-title="La Paroisse">
+    <div class="page-head">
+      <p class="eyebrow">Notre histoire</p>
+      <h1>La Paroisse Sainte Monique</h1>
+    </div>
+
+    <div class="content-columns">
+      <div>
+        <h2>Une communauté enracinée à Makepe</h2>
+        <p>Fondée par la volonté des premiers fidèles du quartier, la paroisse Sainte Monique rassemble
+          aujourd'hui des familles, des jeunes et des anciens autour d'une même foi. Au fil des années,
+          elle est devenue un repère spirituel et social pour tout le quartier de Makepe.</p>
+        <p>Placée sous le patronage de Sainte Monique, mère de Saint Augustin, la paroisse s'inspire de sa
+          persévérance dans la prière et de sa confiance inébranlable, qualités que la communauté cherche
+          à vivre au quotidien.</p>
+
+        <h2>Le mot du curé</h2>
+        <blockquote>« Que chacun, quel que soit son chemin, trouve ici une porte ouverte et une famille. »</blockquote>
+      </div>
+
+      <aside class="info-card">
+        <h3>Équipe pastorale</h3>
+        <ul class="people-list">
+          <li><strong>Curé</strong><span>Responsable de la paroisse</span></li>
+          <li><strong>Vicaire</strong><span>Accompagnement des groupes</span></li>
+          <li><strong>Diacre</strong><span>Service et catéchèse</span></li>
+          <li><strong>Conseil pastoral</strong><span>Laïcs engagés</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ---------- HORAIRES ---------- -->
+  <section class="view" id="view-horaires" data-title="Horaires & Célébrations">
+    <div class="page-head">
+      <p class="eyebrow">S'organiser</p>
+      <h1>Horaires &amp; Célébrations</h1>
+    </div>
+
+    <div class="timetable">
+      <div class="timetable-group">
+        <h3>Messes dominicales</h3>
+        <ul class="board-list">
+          <li><span class="board-time">Sam · 18:00</span><span>Messe anticipée</span></li>
+          <li><span class="board-time">Dim · 07:00</span><span>Messe en français</span></li>
+          <li><span class="board-time">Dim · 09:30</span><span>Messe solennelle</span></li>
+          <li><span class="board-time">Dim · 17:00</span><span>Messe des jeunes</span></li>
+        </ul>
+      </div>
+      <div class="timetable-group">
+        <h3>En semaine</h3>
+        <ul class="board-list">
+          <li><span class="board-time">Lun–Ven · 06:00</span><span>Messe matinale</span></li>
+          <li><span class="board-time">Mer · 18:00</span><span>Adoration eucharistique</span></li>
+          <li><span class="board-time">Ven · 17:00</span><span>Confessions</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-head" style="margin-top:3rem">
+      <h2>Fêtes &amp; temps forts</h2>
+    </div>
+    <ul class="tag-list">
+      <li>Fête patronale — Sainte Monique</li>
+      <li>Semaine Sainte</li>
+      <li>Noël</li>
+      <li>Pentecôte</li>
+    </ul>
+  </section>
+
+  <!-- ---------- SACREMENTS ---------- -->
+  <section class="view" id="view-sacrements" data-title="Sacrements">
+    <div class="page-head">
+      <p class="eyebrow">Démarches</p>
+      <h1>Sacrements</h1>
+    </div>
+
+    <!-- Accordéon natif en HTML (details/summary), pas de JS nécessaire ici -->
+    <div class="accordion">
+      <details open>
+        <summary>Baptême</summary>
+        <p>Se renseigner au secrétariat au moins deux mois avant la date souhaitée. Une rencontre de
+          préparation est proposée aux parents et parrains/marraines.</p>
+      </details>
+      <details>
+        <summary>Première communion &amp; Confirmation</summary>
+        <p>Préparation assurée dans le cadre de la catéchèse paroissiale, sur plusieurs mois, pour les
+          enfants et les jeunes déjà inscrits au catéchisme.</p>
+      </details>
+      <details>
+        <summary>Mariage</summary>
+        <p>Prendre contact avec le secrétariat au moins six mois à l'avance. Un parcours de préparation
+          au mariage est requis avant la célébration.</p>
+      </details>
+      <details>
+        <summary>Onction des malades</summary>
+        <p>Disponible à tout moment sur demande de la famille, notamment en cas de maladie grave ou avant
+          une intervention chirurgicale.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ---------- GROUPES ---------- -->
+  <section class="view" id="view-groupes" data-title="Groupes & Mouvements">
+    <div class="page-head">
+      <p class="eyebrow">Vie communautaire</p>
+      <h1>Groupes &amp; Mouvements</h1>
+    </div>
+
+    <div class="section-grid">
+      <article class="teaser-card">
+        <h3>Chorale Sainte Monique</h3>
+        <p>Anime les célébrations dominicales. Répétitions le vendredi soir.</p>
+      </article>
+      <article class="teaser-card">
+        <h3>Catéchèse</h3>
+        <p>Préparation à la première communion et à la confirmation, le samedi matin.</p>
+      </article>
+      <article class="teaser-card">
+        <h3>Servants d'autel</h3>
+        <p>Service de l'autel pour les enfants et adolescents de la paroisse.</p>
+      </article>
+      <article class="teaser-card">
+        <h3>Caritas paroissiale</h3>
+        <p>Action sociale et soutien aux familles en difficulté du quartier.</p>
+      </article>
+      <article class="teaser-card">
+        <h3>Groupe des jeunes</h3>
+        <p>Rencontres, formation et activités pour les jeunes de la paroisse.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ---------- GALERIE ---------- -->
+  <section class="view" id="view-galerie" data-title="Galerie">
+    <div class="page-head">
+      <p class="eyebrow">En images</p>
+      <h1>Galerie photo</h1>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Vignettes générées en CSS (à remplacer par de vraies photos) -->
+      <button class="gallery-item gallery-item1" style="--tone:1" data-caption="Façade de l'église">
+        <span>Façade de l'église</span>
+      </button>
+      <button class="gallery-item gallery-item2" style="--tone:2" data-caption="Messe solennelle">
+        <span>Messe solennelle</span>
+      </button>
+      <button class="gallery-item gallery-item3" style="--tone:3" data-caption="Fête patronale">
+        <span>Fête patronale</span>
+      </button>
+      <button class="gallery-item gallery-item4" style="--tone:4" data-caption="Groupe des jeunes">
+        <span>Culte divers</span>
+      </button>
+      <button class="gallery-item gallery-item5" style="--tone:5" data-caption="Chorale">
+        <span>Chorale</span>
+      </button>
+      <button class="gallery-item gallery-item6" style="--tone:6" data-caption="Catéchèse">
+        <span>Entréé de l'eglise</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ---------- MENTIONS LÉGALES ---------- -->
+  <section class="view" id="view-mentions" data-title="Mentions légales">
+    <div class="page-head">
+      <p class="eyebrow">Informations</p>
+      <h1>Mentions légales</h1>
+    </div>
+    <div class="content-columns">
+      <div>
+        <p>Site édité par la paroisse Sainte Monique, Makepe. Pour toute question relative au contenu de
+          ce site, merci de contacter le secrétariat paroissial aux coordonnées indiquées en bas de page.</p>
+        <p>Ce site ne collecte aucune donnée personnelle et ne dispose d'aucune base de données.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== PIED DE PAGE ===================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <strong>Paroisse Sainte Monique</strong>
+      <p>Quartier Makepe, Douala — Cameroun</p>
+    </div>
+    <div>
+      <p>+237 6 95 66 04 63 </p>
+      <p>contact@paroissesaintemonique.org</p>
+    </div>
+    <a href="#mentions" data-route-link>Mentions légales</a>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
